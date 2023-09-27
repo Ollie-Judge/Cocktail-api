@@ -26,14 +26,14 @@
       </div>
     </div>
 
-    <% if(userChoice === "Random") {%>
+    <% if(locals.userChoice === "Random") {%>
     <div>
       <h5>Get a random cocktail</h5>
       <div>
         <input type="button" value="random" formaction="/searchRandom" />
       </div>
     </div>
-    <% } else if (userChoice === "Cocktail Name") { %>
+    <% } else if (locals.userChoice === "Cocktail Name") { %>
     <div>
       <h5>Search for a cocktail by name</h5>
       <div>
@@ -41,7 +41,7 @@
         <input type="button" value="Search" formaction="/searchCocktailName" />
       </div>
     </div>
-    <% } else if (userChoice === "Alchohol Type") { %>
+    <% } else if (locals.userChoice === "Alchohol Type") { %>
     <div>
       <h5>Search for a cocktail by alchohol tpye</h5>
       <div>
