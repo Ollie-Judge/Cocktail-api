@@ -12,5 +12,71 @@
       If you need to make a cocktail but you dont know what to make, we are here
       to help!
     </p>
+
+    <div>
+      <h5>Choose how you would like to search for a coctail</h5>
+      <div>
+        <input type="button" value="Random" id="chosenRandom" />
+      </div>
+      <div>
+        <input type="button" value="Coctail Name" id="chosenCoctailName" />
+      </div>
+      <div>
+        <input type="button" value="Alchohol Type" id="chosenAlchoholType" />
+      </div>
+    </div>
+
+    <% if(userChoice === "Random") {%>
+    <div>
+      <h5>Get a random cocktail</h5>
+      <div>
+        <input type="button" value="random" formaction="/searchRandom" />
+      </div>
+    </div>
+    <% } else if (userChoice === "Cocktail Name") { %>
+    <div>
+      <h5>Search for a cocktail by name</h5>
+      <div>
+        <input type="text" name="cocktailName" id="cocktailNameInput" />
+        <input type="button" value="Search" formaction="/searchCocktailName" />
+      </div>
+    </div>
+    <% } else if (userChoice === "Alchohol Type") { %>
+    <div>
+      <h5>Search for a cocktail by alchohol tpye</h5>
+      <div>
+        <input type="text" name="alchoholType" id="alchoholTypeInput" />
+        <input type="button" value="Search" formaction="/searchAlchoholType" />
+      </div>
+    </div>
+    <% } else {%>
+    <div>
+      <p>Choose how you would like to find a cocktail</p>
+    </div>
+    <% } %>
+    <script>
+      let userChoice;
+
+      let randomButton = document
+        .getElementById("chosenRandom")
+        .addEventListener("click", function () {
+          userChoice = "Random";
+          console.log(userChoice);
+        });
+
+      let cocktailNameButton = document
+        .getElementById("chosenCoctailName")
+        .addEventListener("click", function () {
+          userChoice = "Cocktail Name";
+          console.log(userChoice);
+        });
+
+      let alchoholTypeButton = document
+        .getElementById("chosenAlchoholType")
+        .addEventListener("click", function () {
+          userChoice = "Alchohol Type";
+          console.log(userChoice);
+        });
+    </script>
   </body>
 </html>
