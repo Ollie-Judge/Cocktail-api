@@ -21,7 +21,11 @@
     <div>
       <h5>Get a random cocktail</h5>
       <div>
-        <input type="button" value="random" formaction="/searchRandom" />
+        <input
+          type="button"
+          value="random"
+          onclick="window.location.href='/searchRandom'"
+        />
       </div>
     </div>
     <%# } else if (locals.userChoice === "Cocktail Name") { %>
@@ -44,13 +48,13 @@
     <div>
       <% if (locals.data) {%>
 
-      <p><%= data[0].strDrink %></p>
-      <p><%= data[0].strCategory%></p>
-      <p><%= data[0].strAlcoholic %></p>
-      <p><%= data[0].strGlass %></p>
-      <p><%= data[0].strInstructions %></p>
-
-      <%}%>
+      <p>Drink name: <%= data[0].strDrink %></p>
+      <p>Drink Category: <%= data[0].strCategory%></p>
+      <p>Alchoholic or non Alchoholic: <%= data[0].strAlcoholic %></p>
+      <p>Glass Type: <%= data[0].strGlass %></p>
+      <p>Instructions: <%= data[0].strInstructions %></p>
+      <img src="<% data[0].strDrinkThumb %>" alt="Drink Photo" />
+      <% } %>
     </div>
     <%if (locals.error) {%>
     <div id="tag-error" class="tag-error"><h1><%=error%></h1></div>
