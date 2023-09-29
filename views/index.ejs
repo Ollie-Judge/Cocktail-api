@@ -15,25 +15,16 @@
 
     <div>
       <h5>Choose how you would like to search for a coctail</h5>
-      <div>
-        <input type="button" value="Random" id="chosenRandom" />
-      </div>
-      <div>
-        <input type="button" value="Coctail Name" id="chosenCoctailName" />
-      </div>
-      <div>
-        <input type="button" value="Alchohol Type" id="chosenAlchoholType" />
-      </div>
     </div>
 
-    <% if(locals.userChoice === "Random") {%>
+    <%# if(locals.userChoice === "Random") {%>
     <div>
       <h5>Get a random cocktail</h5>
       <div>
         <input type="button" value="random" formaction="/searchRandom" />
       </div>
     </div>
-    <% } else if (locals.userChoice === "Cocktail Name") { %>
+    <%# } else if (locals.userChoice === "Cocktail Name") { %>
     <div>
       <h5>Search for a cocktail by name</h5>
       <div>
@@ -41,42 +32,28 @@
         <input type="button" value="Search" formaction="/searchCocktailName" />
       </div>
     </div>
-    <% } else if (locals.userChoice === "Alchohol Type") { %>
+    <%# } else if (locals.userChoice === "Alchohol Type") { %>
     <div>
-      <h5>Search for a cocktail by alchohol tpye</h5>
+      <h5>Search for a cocktail by alchohol type</h5>
       <div>
         <input type="text" name="alchoholType" id="alchoholTypeInput" />
         <input type="button" value="Search" formaction="/searchAlchoholType" />
       </div>
     </div>
-    <% } else {%>
+
     <div>
-      <p>Choose how you would like to find a cocktail</p>
+      <% if (locals.data) {%>
+
+      <p><%= data[0].strDrink %></p>
+      <p><%= data[0].strCategory%></p>
+      <p><%= data[0].strAlcoholic %></p>
+      <p><%= data[0].strGlass %></p>
+      <p><%= data[0].strInstructions %></p>
+
+      <%}%>
     </div>
-    <% } %>
-    <script>
-      let userChoice;
-
-      let randomButton = document
-        .getElementById("chosenRandom")
-        .addEventListener("click", function () {
-          userChoice = "Random";
-          console.log(userChoice);
-        });
-
-      let cocktailNameButton = document
-        .getElementById("chosenCoctailName")
-        .addEventListener("click", function () {
-          userChoice = "Cocktail Name";
-          console.log(userChoice);
-        });
-
-      let alchoholTypeButton = document
-        .getElementById("chosenAlchoholType")
-        .addEventListener("click", function () {
-          userChoice = "Alchohol Type";
-          console.log(userChoice);
-        });
-    </script>
+    <%if (locals.error) {%>
+    <div id="tag-error" class="tag-error"><h1><%=error%></h1></div>
+    <%}%>
   </body>
 </html>
