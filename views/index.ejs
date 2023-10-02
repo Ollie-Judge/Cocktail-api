@@ -44,10 +44,15 @@
     <%# } else if (locals.userChoice === "Alchohol Type") { %>
     <div>
       <h5>Search for a cocktail by alchohol type</h5>
-      <div>
+      <form id="alchoholTypeForm" method="post">
         <input type="text" name="alchoholType" id="alchoholTypeInput" />
-        <input type="button" value="Search" formaction="/searchAlchoholType" />
-      </div>
+        <input
+          type="submit"
+          value="Search"
+          formaction="/searchAlchoholType"
+          onclick="window.location.href='/searchAlchoholType'"
+        />
+      </form>
     </div>
 
     <div>
