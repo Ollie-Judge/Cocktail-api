@@ -28,11 +28,17 @@ app.get("/searchRandom", async (req, res) => {
   }
 });
 
-app.post("/", async (req, res) => {
-  const cocktailName = req.body.cocktailName;
+app.post("/searchCocktailName", async (req, res) => {
+  const cocktailName = req.body;
+  console.log(cocktailName);
   try {
-    const result = await axios.get(API_URL + "/search.php?s=" + cocktailName);
-    res.render("index.ejs", { content: JSON.stringify(result.data) });
+    const response = await axios.get(
+      API_URL + "/search.php?s=" + cocktailName.cocktailName
+    );
+    const result = response.data.drinks;
+    console.log(result);
+    // its not searching, so sort the web adress out
+    res.render("index.ejs", { data: result });
   } catch (error) {
     res.render("index.ejs", { content: JSON.stringify(error.response.data) });
   }

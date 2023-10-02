@@ -31,10 +31,15 @@
     <%# } else if (locals.userChoice === "Cocktail Name") { %>
     <div>
       <h5>Search for a cocktail by name</h5>
-      <div>
+      <form id="cocktailNameForm" method="post">
         <input type="text" name="cocktailName" id="cocktailNameInput" />
-        <input type="button" value="Search" formaction="/searchCocktailName" />
-      </div>
+        <input
+          type="submit"
+          value="Search"
+          formaction="/searchCocktailName"
+          onclick="window.location.href='/searchCocktailName'"
+        />
+      </form>
     </div>
     <%# } else if (locals.userChoice === "Alchohol Type") { %>
     <div>
