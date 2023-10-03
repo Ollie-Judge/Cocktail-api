@@ -17,11 +17,32 @@
       <h5>Choose how you would like to search for a coctail</h5>
     </div>
 
+    <div>
+      <select name="userSearchChoice" id="userSearchChoice">
+        <option value="randomOption">Search for a random cocktail</option>
+        <option value="cocktailNameOption">
+          Search for a cocktail by name
+        </option>
+        <option value="akchoholNameOption">
+          Search for a cocktail by alchohol name
+        </option>
+      </select>
+
+      <input
+          class="submit"
+          type="button"
+          value="Go!"
+          onclick="window.location.href='/search'"
+        />
+      </div>
+    </div>
+
     <%# if(locals.userChoice === "Random") {%>
     <div>
       <h5>Get a random cocktail</h5>
       <div>
         <input
+          class="submit"
           type="button"
           value="random"
           onclick="window.location.href='/searchRandom'"
@@ -34,6 +55,7 @@
       <form id="cocktailNameForm" method="post">
         <input type="text" name="cocktailName" id="cocktailNameInput" />
         <input
+          class="submit"
           type="submit"
           value="Search"
           formaction="/searchCocktailName"
@@ -47,6 +69,7 @@
       <form id="alchoholTypeForm" method="post">
         <input type="text" name="alchoholType" id="alchoholTypeInput" />
         <input
+          class="submit"
           type="submit"
           value="Search"
           formaction="/searchAlchoholType"
@@ -63,11 +86,32 @@
       <p>Alchoholic or non Alchoholic: <%= data[0].strAlcoholic %></p>
       <p>Glass Type: <%= data[0].strGlass %></p>
       <p>Instructions: <%= data[0].strInstructions %></p>
-      <img src="<% data[0].strDrinkThumb %>" alt="Drink Photo" />
+      <img src="<%= data[0].strDrinkThumb %>" alt="Drink Photo" id="drinkImage" />
       <% } %>
     </div>
     <%if (locals.error) {%>
     <div id="tag-error" class="tag-error"><h1><%=error%></h1></div>
     <%}%>
   </body>
+  <script>
+    let userChoice;
+    let randomButton = document
+      .getElementById("chosenRandom")
+      .addEventListener("click", function () {
+        userChoice = "Random";
+        console.log(userChoice);
+      });
+    let cocktailNameButton = document
+      .getElementById("chosenCoctailName")
+      .addEventListener("click", function () {
+        userChoice = "Cocktail Name";
+        console.log(userChoice);
+      });
+    let alchoholTypeButton = document
+      .getElementById("chosenAlchoholType")
+      .addEventListener("click", function () {
+        userChoice = "Alchohol Type";
+        console.log(userChoice);
+      });
+  </script>
 </html>

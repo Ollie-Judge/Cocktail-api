@@ -1,1 +1,13 @@
+body {
+  text-align: center;
+}
 
+.submit {
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+#drinkImage {
+  width: 400px;
+  height: 400px;
+}

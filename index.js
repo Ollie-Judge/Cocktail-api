@@ -14,6 +14,17 @@ app.get("/", async (req, res) => {
   res.render("index.ejs");
 });
 
+app.get("/search", async (req, res) => {
+  try {
+    res.render("index.ejs");
+  } catch (error) {
+    console.error("Failed to make request:", error.message);
+    res.render("index.ejs", {
+      error: error.message,
+    });
+  }
+});
+
 app.get("/searchRandom", async (req, res) => {
   try {
     const response = await axios.get(API_URL + "/random.php");
