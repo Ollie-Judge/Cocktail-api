@@ -14,17 +14,6 @@ app.get("/", async (req, res) => {
   res.render("index.ejs");
 });
 
-app.get("/search", async (req, res) => {
-  try {
-    res.render("index.ejs");
-  } catch (error) {
-    console.error("Failed to make request:", error.message);
-    res.render("index.ejs", {
-      error: error.message,
-    });
-  }
-});
-
 app.get("/searchRandom", async (req, res) => {
   try {
     const response = await axios.get(API_URL + "/random.php");
@@ -54,12 +43,12 @@ app.post("/searchCocktailName", async (req, res) => {
   }
 });
 
-app.post("/searchAlchoholType", async (req, res) => {
-  const alchoholType = req.body;
-  console.log(alchoholType);
+app.post("/searchAlcoholType", async (req, res) => {
+  const alcoholType = req.body;
+  console.log(alcoholType);
   try {
     const response = await axios.get(
-      API_URL + "/search.php?s=" + alchoholType.alchoholType
+      API_URL + "/search.php?s=" + alcoholType.alchoholType
     );
     const result = response.data.drinks;
     console.log(result);

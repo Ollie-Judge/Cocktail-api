@@ -14,30 +14,25 @@
     </p>
 
     <div>
-      <h5>Choose how you would like to search for a coctail</h5>
+      <h5>Choose how you would like to search for a cocktail</h5>
     </div>
 
     <div>
       <select name="userSearchChoice" id="userSearchChoice">
+        <option disabled selected value>
+          -- Choose how you'd like to find a cocktail --
+        </option>
         <option value="randomOption">Search for a random cocktail</option>
         <option value="cocktailNameOption">
           Search for a cocktail by name
         </option>
-        <option value="akchoholNameOption">
-          Search for a cocktail by alchohol name
+        <option value="alcoholNameOption">
+          Search for a cocktail by alcohol name
         </option>
       </select>
-
-      <input
-          class="submit"
-          type="button"
-          value="Go!"
-          onclick="window.location.href='/search'"
-        />
-      </div>
     </div>
 
-    <%# if(locals.userChoice === "Random") {%>
+    <%#if(locals.userChoice === "Random") {%>
     <div>
       <h5>Get a random cocktail</h5>
       <div>
@@ -63,55 +58,56 @@
         />
       </form>
     </div>
-    <%# } else if (locals.userChoice === "Alchohol Type") { %>
+    <%# } else if (locals.userChoice === "Alcohol Type") { %>
     <div>
-      <h5>Search for a cocktail by alchohol type</h5>
-      <form id="alchoholTypeForm" method="post">
-        <input type="text" name="alchoholType" id="alchoholTypeInput" />
+      <h5>Search for a cocktail by alcohol type</h5>
+      <form id="alcoholTypeForm" method="post">
+        <input type="text" name="alcoholType" id="alcoholTypeInput" />
         <input
           class="submit"
           type="submit"
           value="Search"
-          formaction="/searchAlchoholType"
-          onclick="window.location.href='/searchAlchoholType'"
+          formaction="/searchAlcoholType"
+          onclick="window.location.href='/searchAlcoholType'"
         />
       </form>
     </div>
-
-    <div>
-      <% if (locals.data) {%>
-
-      <p>Drink name: <%= data[0].strDrink %></p>
-      <p>Drink Category: <%= data[0].strCategory%></p>
-      <p>Alchoholic or non Alchoholic: <%= data[0].strAlcoholic %></p>
-      <p>Glass Type: <%= data[0].strGlass %></p>
-      <p>Instructions: <%= data[0].strInstructions %></p>
-      <img src="<%= data[0].strDrinkThumb %>" alt="Drink Photo" id="drinkImage" />
-      <% } %>
+    <%# } %> <% if (locals.data) {%> <% for(i = 0; i< locals.data.length; i++) {
+    %>
+    <div id="cocktailOutputDiv">
+      <p>Drink name: <%= data[i].strDrink %></p>
+      <p>Drink Category: <%= data[i].strCategory%></p>
+      <p>Alchoholic or non Alchoholic: <%= data[i].strAlcoholic %></p>
+      <p>Glass Type: <%= data[i].strGlass %></p>
+      <p>Instructions: <%= data[i].strInstructions %></p>
+      <img
+        src="<%= data[i].strDrinkThumb %>"
+        alt="Drink Photo"
+        id="drinkImage"
+      />
     </div>
-    <%if (locals.error) {%>
+    <% }} %> <%if (locals.error) {%>
     <div id="tag-error" class="tag-error"><h1><%=error%></h1></div>
     <%}%>
   </body>
   <script>
     let userChoice;
-    let randomButton = document
-      .getElementById("chosenRandom")
-      .addEventListener("click", function () {
-        userChoice = "Random";
-        console.log(userChoice);
-      });
-    let cocktailNameButton = document
-      .getElementById("chosenCoctailName")
-      .addEventListener("click", function () {
-        userChoice = "Cocktail Name";
-        console.log(userChoice);
-      });
-    let alchoholTypeButton = document
-      .getElementById("chosenAlchoholType")
-      .addEventListener("click", function () {
-        userChoice = "Alchohol Type";
-        console.log(userChoice);
-      });
+    console.log(userChoice);
+    window.onload = function () {
+      document
+        .getElementById("userSearchChoice")
+        .addEventListener("change", function (event) {
+          if (event.target.value === "randomOption") {
+            userChoice = "Random";
+            console.log(userChoice);
+          } else if (event.target.value === "cocktailNameOption") {
+            userChoice = "Cocktail Name";
+            console.log(userChoice);
+          } else if (event.target.value === "alcoholNameOption") {
+            userChoice = "Alcohol Type";
+            console.log(userChoice);
+          }
+        });
+    };
   </script>
 </html>
