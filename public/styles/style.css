@@ -1,18 +1,24 @@
 body {
   text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  background-color: #fdf5df;
 }
 
 .submit {
   padding: 5px 15px;
   border-radius: 5px;
+  background-color: #7da2a9;
 }
 
 #cocktailOutputDiv {
   margin: 25px auto;
   border: 1px solid black;
   border-radius: 10px;
-  box-shadow: 2px 2px grey;
+  padding: 50px;
+  box-shadow: 5px 5px grey;
   width: 50%;
+  background-color: #7da2a9;
+  font-weight: 1000;
 }
 
 #drinkImage {

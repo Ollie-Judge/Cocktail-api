@@ -52,7 +52,6 @@ app.post("/searchAlcoholType", async (req, res) => {
     );
     const result = response.data.drinks;
     console.log(result);
-    // its not searching, so sort the web adress out
     res.render("index.ejs", { data: result });
   } catch (error) {
     res.render("index.ejs", { content: JSON.stringify(error.response.data) });

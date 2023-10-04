@@ -4,10 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/styles/style.css" />
-    <title>Cocktail generator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Rubik+Wet+Paint&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <title>Cocktail Generator</title>
   </head>
   <body>
-    <h1>Cocktail generator</h1>
+    <h1>Cocktail Generator <i class="fa-solid fa-martini-glass-citrus"></i></h1>
     <p>
       If you need to make a cocktail but you dont know what to make, we are here
       to help!
@@ -18,33 +27,17 @@
     </div>
 
     <div>
-      <select name="userSearchChoice" id="userSearchChoice">
-        <option disabled selected value>
-          -- Choose how you'd like to find a cocktail --
-        </option>
-        <option value="randomOption">Search for a random cocktail</option>
-        <option value="cocktailNameOption">
-          Search for a cocktail by name
-        </option>
-        <option value="alcoholNameOption">
-          Search for a cocktail by alcohol name
-        </option>
-      </select>
-    </div>
-
-    <%#if(locals.userChoice === "Random") {%>
-    <div>
       <h5>Get a random cocktail</h5>
       <div>
         <input
           class="submit"
           type="button"
-          value="random"
+          value="Random"
           onclick="window.location.href='/searchRandom'"
         />
       </div>
     </div>
-    <%# } else if (locals.userChoice === "Cocktail Name") { %>
+
     <div>
       <h5>Search for a cocktail by name</h5>
       <form id="cocktailNameForm" method="post">
@@ -58,7 +51,7 @@
         />
       </form>
     </div>
-    <%# } else if (locals.userChoice === "Alcohol Type") { %>
+
     <div>
       <h5>Search for a cocktail by alcohol type</h5>
       <form id="alcoholTypeForm" method="post">
@@ -72,8 +65,7 @@
         />
       </form>
     </div>
-    <%# } %> <% if (locals.data) {%> <% for(i = 0; i< locals.data.length; i++) {
-    %>
+    <% if (locals.data) {%> <% for(i = 0; i< locals.data.length; i++) { %>
     <div id="cocktailOutputDiv">
       <p>Drink name: <%= data[i].strDrink %></p>
       <p>Drink Category: <%= data[i].strCategory%></p>
@@ -106,24 +98,4 @@
     <div id="tag-error" class="tag-error"><h1><%=error%></h1></div>
     <%}%>
   </body>
-  <script>
-    let userChoice;
-    console.log(userChoice);
-    window.onload = function () {
-      document
-        .getElementById("userSearchChoice")
-        .addEventListener("change", function (event) {
-          if (event.target.value === "randomOption") {
-            userChoice = "Random";
-            console.log(userChoice);
-          } else if (event.target.value === "cocktailNameOption") {
-            userChoice = "Cocktail Name";
-            console.log(userChoice);
-          } else if (event.target.value === "alcoholNameOption") {
-            userChoice = "Alcohol Type";
-            console.log(userChoice);
-          }
-        });
-    };
-  </script>
 </html>
